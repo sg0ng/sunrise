@@ -9,8 +9,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #222230;
+    --foreground: #ffffff;
   }
 }
 
@@ -18,4 +18,34 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+p {
+  color: var(--foreground);
+  background: var(--background);
+  font-size: 18px;
+}
+
+.timepicker {
+  padding-top: 10px;
+  font-size: 16px;
+}
+
+.timepicker input {
+  background-color: transparent;
+  color: #FFFFFF;
+  min-width: auto;
+  font-size: 16px;
+}
+
+.timepicker select {
+  background-color: #222230;
+  color: #FFFFFF;
+  font-size: 16px;
+}
+
+.timepicker input::-webkit-outer-spin-button,
+.timepicker input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
