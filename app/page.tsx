@@ -4,6 +4,8 @@ import useSound from 'use-sound';
 import React, { useEffect, useState } from 'react';
 import TimePicker from 'react-time-picker';
 import 'react-clock/dist/Clock.css';
+import Head from 'next/head'
+//import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 export default function Home() {
   const [time, setTime] = useState('00:00');
@@ -12,7 +14,8 @@ export default function Home() {
   const [isAlarmSet, setIsAlarmSet] = useState(false);
   const [isTime, setIsTime] = useState(false);
   const [hasPlayed, setHasPlayed] = useState(false);
-  const handleKeyDown = (e) => {
+  //const handle = useFullScreenHandle();
+  const handleKeyDown = (e: { key: string; }) => {
     if (e.key === 'Enter') {
       setIsAlarmSet(true);
     }
@@ -62,10 +65,13 @@ export default function Home() {
         }}
         className="grid place-items-center"
       >
+        <Head>
+      <title>Sunrise Alarm - Wake Up!</title>
+    </Head>
         <div className="text-center">
           <button
             className="rounded-full border border-solid border-[#746a5b] dark:border-[#8f8980] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            onClick={() => [setIsAlarmSet(false), setIsTime(false), setHasPlayed(false), stop()]}
+            onClick={() => [setIsAlarmSet(false), setIsTime(false), setHasPlayed(false), stop(), setBackgroundColor("0, 0, 0")]}
           >
             Stop alarm
           </button>
@@ -83,14 +89,18 @@ export default function Home() {
         }}
         className="grid place-items-center"
       >
+        <Head>
+        <title>Sunrise Alarm</title>
+      </Head>
         <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-12 pb-20 gap-16 sm:p-24 font-[family-name:var(--font-geist-sans)]">
           <h1 className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-sans)]"
           >
+            
             Waking up at: {time}
           </h1>
           <button
             className="rounded-full border border-solid border-[#746a5b] dark:border-[#8f8980] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            onClick={() => setIsAlarmSet(false)}
+            onClick={() => [setIsAlarmSet(false), setBackgroundColor("0, 0, 0")]}
           >
             Cancel alarm
           </button>
@@ -100,15 +110,18 @@ export default function Home() {
   }
 
   return (
+    
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]"
     >
-      
+      <Head>
+      <title>Sunrise Alarm</title>
+    </Head>
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        Wake up better with a simulated sunrise. Simply leave your monitor/laptop plugged in at max brightness and volume. Set to fullscreen for best brightness.
+        Wake up better with a simulated sunrise. Simply leave your monitor/laptop plugged in at max brightness and volume.
         <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-sans)]">
           <p>Set alarm time:</p>
           <TimePicker 
-            onChange={setTime} 
+            onChange={(value) => setTime(value as string)} 
             value={time} 
             className={'timepicker'} 
             disableClock={true} 
