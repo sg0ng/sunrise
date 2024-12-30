@@ -9,8 +9,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #222230;
-    --foreground: #ffffff;
+    --background: #000000;
+    --foreground: #8f8980;
   }
 }
 
@@ -22,7 +22,7 @@ body {
 
 p {
   color: var(--foreground);
-  background: var(--background);
+  background: transparent;
   font-size: 18px;
 }
 
@@ -33,19 +33,18 @@ p {
 
 .timepicker input {
   background-color: transparent;
-  color: #FFFFFF;
+  color: var(--foreground);
   min-width: auto;
   font-size: 16px;
 }
 
 .timepicker select {
-  background-color: #222230;
-  color: #FFFFFF;
+  background-color: transparent;
+  color: var(--foreground);
   font-size: 16px;
 }
 
 .timepicker input::-webkit-outer-spin-button,
 .timepicker input::-webkit-inner-spin-button {
   -webkit-appearance: none;
-  margin: 0;
 }
