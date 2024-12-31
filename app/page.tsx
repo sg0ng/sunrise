@@ -10,7 +10,7 @@ import { FullScreen, useFullScreenHandle } from "react-full-screen";
 export default function Home() {
   const [time, setTime] = useState('00:00');
   const [backgroundColor, setBackgroundColor] = useState("#222230");
-  const [play, { stop }] = useSound('/birds.mp3', {loop: true, interrupt: true});
+  const [play, { stop }] = useSound('./birds.mp3', {loop: true, interrupt: true});
   const [isAlarmSet, setIsAlarmSet] = useState(false);
   const [isTime, setIsTime] = useState(false);
   const [hasPlayed, setHasPlayed] = useState(false);
